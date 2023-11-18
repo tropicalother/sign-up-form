@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="queryForm">
+        <li>
+        <label for="name">CUSTOMER NAME:</label>
+        <input type="text" id="name" name="user_gender" />
+        <label for="sex">SEX: </label>
+        <input type="radio" id="male" name="user_gender" />
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="user_gender" />
+        <label for="female">Female</label>
+        <input type="radio" id="other" name="user_gender" />
+        <label for="female">Other: </label>
+        <input type="text" id="name" name="user_gender" />
+        </li>
+
+        <li>
+        <label for="drink">DRINK:</label>
+        <input type="radio" id="coffee" name="drink" />
+        <label for="coffee">Coffee</label>
+        <img src="coffee.png">
+        <input type="radio" id="capuccino" name="drink" />
+        <label for="capuccino">Capuccino</label>
+        <img src="capuccino.png">
+        <input type="radio" id="tea" name="drink" />
+        <label for="tea">Tea</label>
+        <img src="tea.png">
+        </li>
+
+        <li>
+            <label for="milk_type">MILK:</label>
+        <select>
+            <option value="none">None</option>
+            <option value="soy_milk">Soy Milk</option>
+            <option value="oat_milk">Oat Milk</option>
+            <option value="cow_milk">Cow Milk</option>
+        </select>
+
+
+        <label for="ice">ICE:</label>
+        <input type="checkbox" id="ice" name="ice" />
+        <label for="syrup_pumps">HOW MUCH SYRUP:</label>
+        <button id='pumpDisplay'>"Pump me!"</button>
+        </li>
+        
+        <li>
+            <h2 id="displayCalories">Calories: 0</h2>
+            <h2 id="displayPrice">Price: $0</h2>
+        </li>
+    </form>
+    <div id="bigBoy"></div>
+</body>
+
+<script>
+    const body = document.body
+    const bigBoy = document.getElementById('bigBoy')
+
+    const titleText = document.createElement('titleText')
+    titleText.setAttribute('id', 'titleText')
+    titleText.textContent = "Welcome to the Electronic Café"
+    const russiaFlag = document.createElement('img')
+    russiaFlag.setAttribute('src', 'russia_flag.png')
+
+    const block1 = document.createElement('div')
+    block1.classList.add('colorBlock')
+    block1.classList.add('bodyBlock')
+    const block2 = document.createElement('div')
+    block2.classList.add('colorBlock')
+    block2.classList.add('green')
+    const block3 = document.createElement('div')
+    block3.classList.add('colorBlock')
+    block3.classList.add('headerBlock')
+
+    const flBlock1 = document.createElement('div')
+    flBlock1.classList.add('floatingBlock')
+
+    const signUpButton = document.createElement('button')
+    const colorButton = document.createElement('button')
+
+
+    /* color button */   
+
+    colorButton.textContent = 'Change color!'
+    let colorNum = 0
+
+
+    colorButton.addEventListener('click', function() {
+        event.preventDefault()
+        if (colorNum == 0)
+            {
+                body.style.setProperty('--color-secondary', '#FF0000')
+                body.style.setProperty('--color-tertiary', '#FFA500')
+                colorNum++
+            }
+        else if (colorNum == 1)
+            {
+                body.style.setProperty('--color-secondary', '#00008b')
+                body.style.setProperty('--color-tertiary', '#008000')
+                body.style.setProperty('--color-txt', '#FFFFFF')
+                body.style.setProperty('--color', '#000000')
+                colorNum++
+            }
+        else if (colorNum == 2)
+            {
+                body.style.setProperty('--color-secondary', '#964B00')
+                body.style.setProperty('--color-tertiary', '#AF804F')
+                colorNum++
+            }
+        else if (colorNum == 3)
+            {
+                body.style.setProperty('--color-secondary', '#988558')
+                body.style.setProperty('--color-tertiary', '#5C4033')
+                body.style.setProperty('--color-txt', '#000000')
+                body.style.setProperty('--color', '#FFFFFF')
+                colorNum = 0
+            }
+            console.log('test')
+    })
+
+    /* form */
+    const queryForm = document.getElementById('queryForm')
+    let queries = ['Name', 'Age', 'Sex', 'Ethnicity', 'Eye Color', 'Hair Color']
+
+    const titleDivider = document.createElement('div')
+    titleDivider.classList.add('divider')
+
+    block1.append(queryForm, signUpButton, colorButton)
+    block3.append(titleText, russiaFlag)
+    titleDivider.append(block1, block2)
+    bigBoy.append(block3, titleDivider)
+
+    /*little things */
+
+    let numCalorie = 0
+    let numPrice = 0
+
+    let numPumps = 0
+    const pumpDisplay = document.getElementById('pumpDisplay')
+
+
+    pumpDisplay.addEventListener('click', function() {
+        event.preventDefault()
+        numPumps++
+        pumpDisplay.textContent = ("Number of pumps: " + numPumps)
+        console.log(numPumps)
+    })
+
+</script>
+</html>
